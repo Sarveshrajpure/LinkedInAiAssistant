@@ -1,4 +1,4 @@
-# ChatGPT Writer Take-Home Coding Assignment
+# ChatGPT Writer For LinkedIn
 
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with command: `pnpm create plasmo --with-tailwindcss`.
 
@@ -33,4 +33,5 @@ npm run build
 ```
 
 This should create a production bundle for your extension, ready to be zipped and published to the stores.
+
 # LinkedInAiAssistant
