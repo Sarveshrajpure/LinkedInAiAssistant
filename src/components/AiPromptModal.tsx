@@ -1,13 +1,18 @@
-import React, { useState } from "react"
+import React, { useState, type MouseEventHandler } from "react"
 
 import insertIcon from "../../assets/insertVector.svg"
 import regenerateIcon from "../../assets/RegenerateVector.svg"
 import generateArrow from "../../assets/Vector.svg"
 
-export const AiPromptModal = ({ openModal, setOpenModal }) => {
-  const [prompt, setPrompt] = useState("")
-  const [promptError, setPromptError] = useState("")
-  const [aiResponse, setAiResponse] = useState(false)
+interface ParentProps {
+  openModal: boolean
+  setOpenModal: (openModal: boolean) => void
+}
+
+export const AiPromptModal = ({ openModal, setOpenModal }: ParentProps) => {
+  const [prompt, setPrompt] = useState<string>("")
+  const [promptError, setPromptError] = useState<string>("")
+  const [aiResponse, setAiResponse] = useState<boolean>(false)
   const dummyAiResponse = `Thank you for the opportunity! If you have any more
   questions or if there's anything else I can help you with,
   feel free to ask.`
@@ -59,8 +64,9 @@ export const AiPromptModal = ({ openModal, setOpenModal }) => {
           className="modalContainer fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#0D0D1233] 
           flex justify-center items-center"
           id="modalContainer"
-          onClick={(e: any) => {
-            if (e.target.id === "modalContainer") {
+          onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+            const target = event.target as HTMLDivElement
+            if (target?.id === "modalContainer") {
               setOpenModal(false)
               setAiResponse(false)
               setPromptError("")

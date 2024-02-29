@@ -5,24 +5,26 @@ import { AiPromptModal } from "~components/AiPromptModal"
 import aiIcon from "../../assets/AiIcon.svg"
 
 export const AiButton = () => {
-  const [count, increase] = useReducer((c) => c + 1, 0)
-  const [inputFocus, setInputFocus] = useState(false)
-  const [openModal, setOpenModal] = useState(false)
+  const [inputFocus, setInputFocus] = useState<boolean>(false)
+  const [openModal, setOpenModal] = useState<boolean>(false)
 
-  document.addEventListener("focusin", (event: any) => {
+  document.addEventListener("focusin", (event: Event) => {
+    const target = event.target as HTMLElement
     if (
-      event.target.role === "textbox" &&
-      event.target.className.includes("msg-form__contenteditable")
+      target.role === "textbox" &&
+      target.className.includes("msg-form__contenteditable")
     ) {
       setInputFocus(true)
     }
   })
 
-  document.addEventListener("click", (event: any) => {
-    let parentClassName = event.target.parentNode.className
+  document.addEventListener("click", (event: Event) => {
+    const target = event.target as HTMLElement
+
+    const parentClassName = (target.parentNode as HTMLElement).className
 
     if (
-      event.target.role != "textbox" &&
+      target.role != "textbox" &&
       !parentClassName.includes("msg-form__contenteditable")
     ) {
       setInputFocus(false)
