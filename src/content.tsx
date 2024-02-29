@@ -16,8 +16,10 @@ export const getStyle = () => {
 
 const PlasmoOverlay = () => {
   return (
-    <div className="z-50 flex fixed top-[71%] right-[39.5%]">
-      <AiButton />
+    <div className="h-full w-full bg-red-200">
+      <div className="z-50 flex fixed top-[79%] right-[39.5%]">
+        <AiButton />
+      </div>
     </div>
   )
 }
